@@ -2,7 +2,7 @@
     "variables": [
         {
             "name": "defaultLocation",
-            "value": "WestEurope"
+            "value": "eastus"
         },
         {
             "name": "resourceGroupName",
@@ -14,7 +14,7 @@
         },
         {
             "name": "templateSpecsRGLocation",
-            "value": "WestEurope"
+            "value": "eastus"
         },
         {
             "name": "templateSpecsDescription",
