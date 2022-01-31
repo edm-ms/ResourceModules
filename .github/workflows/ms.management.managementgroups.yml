@@ -7,7 +7,7 @@ on:
         type: boolean
         description: 'Remove deployed module'
         required: false
-        default: 'false' # Deployment does not support tags
+        default: 'true'
       versioningOption:
         type: choice
         description: 'The mode to handle the version increments [major|minor|patch]'
@@ -117,7 +117,7 @@ jobs:
   ###############
   job_publish_module:
     name: 'Publish module'
-    if: contains(fromJson('["refs/heads/main", "refs/heads/master"]'), github.ref)
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
     needs:
       - job_set_workflow_param

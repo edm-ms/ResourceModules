@@ -1,4 +1,4 @@
-name: 'Automanage - Accounts'
+name: 'Service Fabric - Clusters'
 
 parameters:
   - name: removeDeployment
@@ -25,9 +25,9 @@ trigger:
       - main
   paths:
     include:
-      - '/.azuredevops/modulePipelines/ms.automanage.accounts.yml'
+      - '/.azuredevops/modulePipelines/ms.servicefabric.clusters.yml'
       - '/.azuredevops/pipelineTemplates/module.*.yml'
-      - '/arm/Microsoft.Automanage/accounts/*'
+      - '/Microsoft.ServiceFabric/clusters/*'
     exclude:
       - '/**/*.md'
 
@@ -35,7 +35,7 @@ variables:
   - template: '/.azuredevops/pipelineVariables/global.variables.yml'
   - group: 'PLATFORM_VARIABLES'
   - name: modulePath
-    value: '/arm/Microsoft.Automanage/accounts'
+    value: '/arm/Microsoft.ServiceFabric/clusters'
 
 stages:
   - stage: Validation
@@ -50,6 +50,7 @@ stages:
         parameters:
           removeDeployment: '${{ parameters.removeDeployment }}'
           deploymentBlocks:
+            - path: $(modulePath)/.parameters/min.parameters.json
             - path: $(modulePath)/.parameters/parameters.json
 
   - stage: Publishing
